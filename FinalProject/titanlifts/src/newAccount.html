@@ -4,68 +4,69 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TitanLifts - New User</title>
-    <link rel="stylesheet" href="newAccount.css">
+    <link rel="stylesheet" href="newAccount.css" />
+    <style>
+      body {
+        text-align: center;
+      }
+
+      .navbar {
+        text-align: center;
+      }
+
+      h1 {
+        margin-top: 1em;
+      }
+
+      form {
+        margin: 1em auto;
+        max-width: 300px;
+      }
+
+      form > div {
+        margin-bottom: 1em;
+      }
+
+      button {
+        margin-top: 1em;
+      }
+    </style>
   </head>
   <body>
     <div class="navbar">
       <a href="./login.html">Home</a>
       <a href="./newAccount.html">Account</a>
     </div>
-    <center>
-      <h1>New User information</h1>
-      <form onsubmit="return registerUser()" method="post" novalidate>
-        <div>
-            <label for="name">Name: </label>
-            <input type="text" id="personName" required/>
-        </div><br>
-        <div>
-            <label for="username">Username: </label>
-            <input type="text" id="username" required/>
-        </div><br>
-        <div>
-            <label for="password">Password: </label>
-            <input type="password" id="password" required/>
-        </div><br>
-        <div>
-            <button type="submit" onclick="registerUser()">Create</button>
-            <button type="button" onclick="backToLogin()">Go Back</button>
-        </div>
-        <span id="error"></span>
-        <span id="success"></span>
+    <h1>New User Information</h1>
+    <form onsubmit="return registerUser()" method="post" novalidate>
+      <div>
+        <label for="username">Username: </label>
+        <input type="text" id="userName" required />
+      </div>
+      <div>
+        <label for="firstname">First Name: </label>
+        <input type="text" id="firstName" required />
+      </div>
+      <div>
+        <label for="lastname">Last Name: </label>
+        <input type="text" id="lastName" required />
+      </div>
+      <div>
+        <label for="email">Email: </label>
+        <input type="text" id="email" required />
+      </div>
+      <div>
+        <label for="password">Password: </label>
+        <input type="password" id="password" required />
+      </div>
+      <div>
+        <button type="submit">Create</button>
+        <button type="button" onclick="backToLogin()">Go Back</button>
+      </div>
+      <span id="error"></span>
+      <span id="success"></span>
     </form>
-    </center>
   </body>
-  <script>
-      function registerUser() {
-      var newuser = document.getElementById("username").value;
-      var newpass = document.getElementById("password").value;
-      var userName = document.getElementById("personName").value;
-
-      //check if username and password meet requirements(password min length of 8)
-      if(userName === "" || newpass === "" || newuser === "") {
-        document.getElementById("error").textContent="Cannot leave these fields empty";
-        error.style.color="red";
-        return false;
-
-        //checks if the password is at least 8 characters long
-      } if (newpass.length < 8) {
-        document.getElementById("error").textContent = "Password must be at least 8 characters long";
-        error.style.color="red";
-        return false;   //Prevent form submission
-      }
-
-      //if all checks pass, display success message and clears input fields
-      document.getElementById("success").textContent="Registration successful!";
-      document.getElementById("error").textContent="";
-      document.getElementById("username").value="";
-      document.getElementById("password").value="";
-      document.getElementById("personName").value="";
-      return true;
-    }
-
-    //Directs the user back to login page when button is clicked
-    function backToLogin() {
-      window.location.href="./login.html";
-    }
-  </script>
+  <script src="newAccount.js"></script>
+  <script src="login.js"></script>
 </html>
